@@ -1,0 +1,25 @@
+{
+  "type": "module",
+  "name": "first-firestore-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cassichan/first-firestore-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cassichan/first-firestore-api/issues"
+  },
+  "homepage": "https://github.com/cassichan/first-firestore-api#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "firebase-admin": "^11.0.0"
+  }
+}
