@@ -1,7 +1,7 @@
 //Set up express server
 import express from 'express';
 //Import getAllCars function from cars.js
-import {getAllCars} from './src/cars.js';
+import {createCar, getAllCars} from './src/cars.js';
 
 
 const app = express();
@@ -10,12 +10,13 @@ const PORT = 3002;
 app.use(express.json());
 
 //Put routes
-app.get('/', (req, res) => {
-    res.send(' 😺Express is working 😸');
-});
+// app.get('/', (req, res) => {
+//     res.send(' 😺Express is working 😸');
+// });
 
 //Get all cars
-app.get('/cars', getAllCars)
+app.get('/cars', getAllCars);
+app.post('/cars', createCar);
 
 
 //Start listening on a port
