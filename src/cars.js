@@ -36,25 +36,26 @@ export function createCar(req, res) {
     .catch((err) => res.status(500).send(err));
 }
 
-//PATCH to update a specific car (using id), update color
+//PATCH to update a specific car (using id)
 export function updateCar(req, res) {
-  const id = req.params.id; // const {id}= req.params;
+   const {id}= req.params; //const id = req.params.id;
+  let carToUpdate = req.body; //Car to update
   //connect to db
   const db = dbConnect();
   //   update doc(id) in cars collection using req.body
-  const requestedCar = req.body; //Car to update
-  let oneCar = db.collection.find((car) => car.id === id);
-  oneCar = { ...oneCar, ...requestedCar }; //using spread operator to make object with the original car properties and the updated/requested car properties
-  db.collection("cars")
-    .add(oneCar)
-    .then((doc) => {
+ 
+  db.collection("cars") //get car collection
+  .doc(id)            //get/fetch the document (car) with this id
+  .update(carToUpdate)  //update the car
+  .then((doc) => {
       res.status(201).send({
         success: true,
         id: doc.id,
       });
     })
-    .catch((err) => res.status(500).send(err));
+  .catch((err) => res.status(500).send(err));
 }
+
 
 
 //Example of function to handle errors
