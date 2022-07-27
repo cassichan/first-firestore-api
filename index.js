@@ -1,7 +1,7 @@
 //Set up express server
 import express from 'express';
 //Import getAllCars function from cars.js
-import {createCar, getAllCars} from './src/cars.js';
+import {createCar, getAllCars, updateCar} from './src/cars.js';
 
 
 const app = express();
@@ -17,6 +17,8 @@ app.use(express.json());
 //Get all cars
 app.get('/cars', getAllCars);
 app.post('/cars', createCar);
+// app.patch('/cars/:id', (req,res) => updateCar(req,res))
+app.patch('/cars/:id', updateCar);
 
 
 //Start listening on a port
