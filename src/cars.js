@@ -38,25 +38,23 @@ export function createCar(req, res) {
 
 //PATCH to update a specific car (using id)
 export function updateCar(req, res) {
-   const {id}= req.params; //const id = req.params.id;
+  const { id } = req.params; //const id = req.params.id;
   let carToUpdate = req.body; //Car to update
   //connect to db
   const db = dbConnect();
   //   update doc(id) in cars collection using req.body
- 
+
   db.collection("cars") //get car collection
-  .doc(id)            //get/fetch the document (car) with this id
-  .update(carToUpdate)  //update the car
-  .then((doc) => {
+    .doc(id) //get/fetch the document (car) with this id
+    .update(carToUpdate) //update the car
+    .then((doc) => {
       res.status(201).send({
         success: true,
         id: doc.id,
       });
     })
-  .catch((err) => res.status(500).send(err));
+    .catch((err) => res.status(500).send(err));
 }
-
-
 
 //Example of function to handle errors
 // function handleError(err, res) {
